@@ -13,10 +13,10 @@ pipeline {
         PORT = "8081"   // 컨테이너와 연결할 포트
 
         REMOTE_USER = "ec2-user"    // 원격(spring) 서버 사용자
-        REMOTE_HOST = "13.125.189.5"    // 원격(spring) 서버 IP(Public IP)
+        REMOTE_HOST = "43.201.107.102"    // 원격(spring) 서버 IP(Public IP)
 
         REMOTE_DIR = "/home/ec2-user/deploy"    // 원격 서버에 파일 복사할 경로 
-        SSH_CREDENTIALS_ID = "e365c3f6-3d96-4647-923c-a58e121b99f7" // Jenkins SSH 자격 증명 ID
+        SSH_CREDENTIALS_ID = "faaea724-b35c-452f-a031-d02cc4fd37a1" // Jenkins SSH 자격 증명 ID
     }
 
     stages {
