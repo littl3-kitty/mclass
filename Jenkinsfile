@@ -46,7 +46,7 @@ pipeline {
             }
         }
 
-        stage('Remote Docker Build & Deploy') {
+        stage('Remote Docker Build n Deploy') {
             steps {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
                     // 원격 서버에서 도커 컨테이너를 제거하고 새로 빌드 및 실행
