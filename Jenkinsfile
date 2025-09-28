@@ -51,13 +51,13 @@ pipeline {
                 sshagent (credentials: [env.SSH_CREDENTIALS_ID]) {
                     // 원격 서버에서 도커 컨테이너를 제거하고 새로 빌드 및 실행
                     sh """
-                    ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${REMOTE_USER}@${REMOTE_HOST} << ENDSSH
-                        cd ${REMOTE_DIR} || exit 1
-                        docker rm -f ${CONTAINER_NAME} || true
-                        docker build -t ${DOCKER_IMAGE} .
-                        docker run -d --name ${CONTAINER_NAME} -p ${PORT}:${PORT} ${DOCKER_IMAGE} # 새 컨테이너 실행
-                    ENDSSH
-                    """
+            ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ${REMOTE_USER}@${REMOTE_HOST} << ENDSSH
+                cd ${REMOTE_DIR} || exit 1
+                docker rm -f ${CONTAINER_NAME} || true
+                docker build -t ${DOCKER_IMAGE} .
+                docker run -d --name ${CONTAINER_NAME} -p ${PORT}:${PORT} ${DOCKER_IMAGE}
+            ENDSSH
+            """
                 }
             }
         }
